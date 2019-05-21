@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import { CityLogo } from '../UI/Icons';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
@@ -16,10 +17,24 @@ class Header extends Component {
                   borderBottom: '2px solid #00285e'
               }}
             >
-              <ToolBar style={{display: 'flex'}}>
-                <div styles={{ flexGrow: 1 }}>
-                    <div className="header_logo"></div>
+              <ToolBar style={{display:'flex'}}>
+                <div style={{ flexGrow: 1 }}>
+                    <div className="header_logo">
+                        <CityLogo
+                          link={true}
+                          linkTo="/"
+                          width="70px"
+                          height="70px"
+                        />
+                    </div>
                 </div>
+                <Link to="/the_team">
+                  <Button color="inherit">team</Button>
+                </Link>
+
+                <Link to="/the_matches">
+                    <Button color="inherit">Matches</Button>
+                </Link>
               </ToolBar>
             </AppBar>
         );
