@@ -30,6 +30,14 @@ class Stripes extends Component {
         ]
     }
 
+    componentDidMount(){
+        let a = document.querySelectorAll('.stripe')
+        a.forEach((item)=>{
+            item.classList.add("mystyle")
+        })
+        console.log('a',a)
+    }
+
     showStripes = () => (
         this.state.stripes.map((stripe,i)=>(
             <Animate
@@ -45,7 +53,7 @@ class Stripes extends Component {
                 }}
 
                 enter={{
-                    background: i==1? '#ffffff':'#98c5e9',
+                    background: i===1? '#ffffff':'#98c5e9',
                     opacity:[1],
                     left:[stripe.left],
                     rotate:[stripe.rotate],
