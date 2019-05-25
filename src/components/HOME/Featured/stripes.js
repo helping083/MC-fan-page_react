@@ -8,21 +8,21 @@ class Stripes extends Component {
         stripes:[
             {
                 background:'#98c5e9',
-                left: 120,
+                left: 70,
                 rotate: 25,
                 top: -260 ,
                 delay: 0
             },
             {
                 background:'#ffffff',
-                left: 360,
+                left: 175,
                 rotate: 25,
                 top: -397,
                 delay: 200
             },
             {
                 background:'#98c5e9',
-                left: 600,
+                left: 280,
                 rotate: 25,
                 top: -498,
                 delay: 400
@@ -74,7 +74,7 @@ class Stripes extends Component {
                             style={{
                                 background,
                                 opacity,
-                                transform: `rotate(${rotate}deg) translate(${left}px,${top}px)`
+                                transform: `rotate(${rotate}deg) translate(${left}%,${top}px)`
                             }}
                         ></div>
                     );

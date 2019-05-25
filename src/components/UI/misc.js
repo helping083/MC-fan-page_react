@@ -1,6 +1,27 @@
 import React from 'react';
-import { link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const Tag = ()=>{
-    const template = <div>tag</div>
+export const Tag = (props)=> {
+    const template = <div 
+                        style={{
+                            background: props.bck,
+                            fontSize: props.size,
+                            color: props.color,
+                            padding: '5px 10px',
+                            display: 'inline-block',
+                            fontFamily: 'Righteous' 
+                        }}
+                      >
+                        {props.children}
+                      </div>
+
+    if(props.link) {
+        return (
+            <Link to={props.linkto}>
+                {template}
+            </Link>
+        )
+    } else {
+        return template
+    }
 }
