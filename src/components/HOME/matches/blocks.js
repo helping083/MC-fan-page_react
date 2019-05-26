@@ -5,6 +5,9 @@ import MatchesBlock from '../../UI/matches_blog';
 import Slide from 'react-reveal/Slide';
 
 class Blocks extends Component {
+    constructor(props) {
+        super(props)
+    }
     state = {
         matches: []
     }
@@ -14,22 +17,27 @@ class Blocks extends Component {
             .then((snapshot) => {
                 const matches = firebaseLooper(snapshot)
                 this.setState({ matches: reverseArray(matches) })
+                this.props.setMatchess({ matches: reverseArray(matches) })
             })
     }
 
-    showMatches = (matches) => (
-        matches ?
-            matches.map((item, index) => (
-                <Slide bottom key={index}>
-                    <div className="item">
-                        <div className="wrapper">
-                            <MatchesBlock match={item} index={index} />
+    showMatches = (matches) => {
+        return (
+            matches ?
+                matches.map((item, index) => (
+                    <Slide bottom key={index} onReveal={() => console.log('hello')}>
+                        <div className="item">
+                            <div className="wrapper">
+                                <MatchesBlock match={item} index={index} />
+                            </div>
                         </div>
-                    </div>
-                </Slide>
-            ))
-            : null
-    )
+                    </Slide>
+                ))
+                : null
+        )
+    
+    }
+
 
     render() {
         return (
