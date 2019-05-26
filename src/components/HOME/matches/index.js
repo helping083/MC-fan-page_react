@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tag } from '../../UI/misc';
-
+import Matches from './blocks';
 const MatchesHome = () => {
     return (
         <div className="home_matches_wrapper">
@@ -12,7 +12,7 @@ const MatchesHome = () => {
                 >
                     matches
                 </Tag>
-
+                 <Matches/>
                 <Tag
                     bck="#fff"
                     size="50px"
