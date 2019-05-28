@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade'
 import FormField from '../../UI/formFields';
+import { validate } from '../../UI/misc';
+
 
 class Enroll extends Component {
 
@@ -11,7 +13,7 @@ class Enroll extends Component {
             email: {
                 element: 'input',
                 value: '',
-                config:{
+                config: {
                     name: 'email_input',
                     type: 'email',
                     placeholder: 'Enter your email'
@@ -26,23 +28,25 @@ class Enroll extends Component {
         }
     }
 
-    submitForm=()=>{
+    submitForm = () => {
 
     }
-    updateForm=(element)=>{
-        const newFormData = {...this.state.formData};
-        const newElement = {...newFormData[element.id]};
+
+    updateForm = (element) => {
+        const newFormData = { ...this.state.formData };
+        const newElement = { ...newFormData[element.id] };
         newElement.value = element.event.target.value;
+        let validData = validate(newElement);
+        newElement.valid = validData[0];
+        newElement.validationMessage = validData[1];
         newFormData[element.id] = newElement;
-        this.setState({
-            formData: newFormData
-        })
+        this.setState({ formData: newFormData });
     }
     render() {
         return (
-           <Fade>
-               <div className="enroll_wrapper">
-                    <form onSubmit={(event)=>{this.submitForm(event)}}>
+            <Fade>
+                <div className="enroll_wrapper">
+                    <form onSubmit={(event) => { this.submitForm(event) }}>
                         <div className="enroll_title">
                             Enter your email
                         </div>
@@ -50,12 +54,12 @@ class Enroll extends Component {
                             <FormField
                                 id={'email'}
                                 formData={this.state.formData.email}
-                                change={(element)=>{this.updateForm(element)}}
+                                change={(element) => { this.updateForm(element) }}
                             />
                         </div>
                     </form>
-               </div>
-           </Fade>
+                </div>
+            </Fade>
         );
     }
 }
